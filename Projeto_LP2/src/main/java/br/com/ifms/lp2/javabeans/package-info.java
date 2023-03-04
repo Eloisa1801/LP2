@@ -1,1 +1,0 @@
-package br.com.ifms.lp2.javabeans;
