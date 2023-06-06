@@ -1,6 +1,7 @@
 package br.ifms.demo.resource;
 import java.util.List;
 import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,11 +12,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.ifms.lp2.mercado.javabeans.Caixa;
-import br.com.ifms.lp2.mercado.repository.CaixaRepository;
-import io.swagger.annotations.ApiResponse;
-import io.swagger.annotations.ApiResponses;
-import jakarta.validation.Valid;
+import br.ifms.demo.javabeans.Caixa;
+import br.ifms.demo.repository.CaixaRepository;
 
 @RestController
 @RequestMapping(value="api/caixa")
@@ -23,23 +21,11 @@ public class CaixaResource {
     @Autowired
 	CaixaRepository CaixaRepository;
 
-
-    @ApiResponses(value = {
-        @ApiResponse(code = 200, message = " Inserido Caixa com sucesso!!!"),
-        @ApiResponse(code = 403, message = "Voçê não tem permissão para acessar este recurso"),
-        @ApiResponse(code = 500, message = "Foi gerado uma exceção")
-    })
+    
     @PostMapping("/inserir")
-    public Caixa salvarCaixa(@RequestBody @Valid Caixa caixa) {
+    public Caixa salvarCaixa(@RequestBody Caixa caixa) {
         return CaixaRepository.save(caixa);
     }
-
-
-    @ApiResponses(value = {
-        @ApiResponse(code = 200, message = " ID do Caixa atulizado com sucesso!!!"),
-        @ApiResponse(code = 403, message = "Voçê não tem permissão para acessar este recurso"),
-        @ApiResponse(code = 500, message = "Foi gerado uma exceção")
-    })
     
     @PutMapping("/atualizar/{id}")
     public void atualizarCaixa(@PathVariable(value= "id")long id,@RequestBody Caixa novoCaixa) {
@@ -50,24 +36,12 @@ public class CaixaResource {
             CaixaRepository.save(novoCaixa);
         }
     }
-
-    @ApiResponses(value = {
-        @ApiResponse(code = 200, message = " Listado com sucesso!!!"),
-        @ApiResponse(code = 403, message = "Voçê não tem permissão para acessar este recurso"),
-        @ApiResponse(code = 500, message = "Foi gerado uma exceção")
-    })
  
-    @GetMapping("/listarCaixa")
+    @GetMapping(value="listar_caixa")
     public List<Caixa> listarCaixa(){
         return CaixaRepository.findAll();
     }
 
-
-    @ApiResponses(value = {
-        @ApiResponse(code = 200, message = " ID do Caixa removido com sucesso!!!"),
-        @ApiResponse(code = 403, message = "Voçê não tem permissão para acessar este recurso"),
-        @ApiResponse(code = 500, message = "Foi gerado uma exceção")
-    })
 
     @DeleteMapping(value="/remover/{id}")
     public void deleteCaixa(@PathVariable("id")long id) throws Exception {

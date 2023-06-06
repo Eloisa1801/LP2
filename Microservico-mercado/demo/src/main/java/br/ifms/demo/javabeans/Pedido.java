@@ -1,10 +1,9 @@
 package br.ifms.demo.javabeans;
-import java.util.ArrayList;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Entity
 public class Pedido {
@@ -21,17 +20,9 @@ public class Pedido {
     public void setIdPedido(int idPedido) {
         this.idPedido = idPedido;
     }
-    private ArrayList<Produto> listaProdutos;
     private double valorTotal;
     private String formaPagamento;
 
-    public ArrayList<Produto> getListaProdutos() {
-        return this.listaProdutos;
-    }
-
-    public void setListaProdutos(ArrayList<Produto> listaProdutos) {
-        this.listaProdutos = listaProdutos;
-    }
 
     public double getValorTotal() {
         return this.valorTotal;
@@ -49,8 +40,8 @@ public class Pedido {
         this.formaPagamento = formaPagamento;
     }
 
-    public Pedido(ArrayList<Produto> listaProdutos, double valorTotal, String formaPagamento) {
-        this.listaProdutos = listaProdutos;
+    public Pedido( double valorTotal, String formaPagamento) {
+
         this.valorTotal = valorTotal;
         this.formaPagamento = formaPagamento;
     }

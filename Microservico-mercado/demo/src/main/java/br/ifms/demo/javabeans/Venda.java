@@ -1,12 +1,10 @@
 package br.ifms.demo.javabeans;
 import java.util.Date;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-
-import java.util.ArrayList;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Entity
 public class Venda {
@@ -23,18 +21,12 @@ public class Venda {
     public void setIdVenda(int idVenda) {
         this.idVenda = idVenda;
     }
-    private ArrayList<Produto> listaProdutos;
+
     private double valorTotal;
     private String formaPagamento;
     private Date Data;
 
-    public ArrayList<Produto> getListaProdutos() {
-        return this.listaProdutos;
-    }
-
-    public void setListaProdutos(ArrayList<Produto> listaProdutos) {
-        this.listaProdutos = listaProdutos;
-    }
+    
 
     public double getValorTotal() {
         return this.valorTotal;
@@ -60,8 +52,8 @@ public class Venda {
         this.Data = Data;
     }
 
-    public Venda(ArrayList<Produto> listaProdutos, double valorTotal, String formaPagamento, Date Data) {
-        this.listaProdutos = listaProdutos;
+    public Venda(double valorTotal, String formaPagamento, Date Data) {
+
         this.valorTotal = valorTotal;
         this.formaPagamento = formaPagamento;
         this.Data = Data;
